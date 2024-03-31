@@ -1,0 +1,84 @@
+<html>
+<head>
+  <link rel="stylesheet" href="add-data.component.css">
+</head>
+<body>
+  <h2>Travel Form </h2>
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()" method="post">
+  <label for="">Source</label>
+  <input
+    type="text"
+    placeholder="Enter Source"
+    name="source"
+    formControlName="source"
+      /><br />
+  <span style="color:red" *ngIf="source && source.invalid && source.touched">
+    this Field is not Valid
+  </span>
+
+  <br> 
+  <label for="">Destination</label>
+  <input
+    type="text"
+    placeholder="Enter destination"
+    name="detination"
+    formControlName="destination"
+  /><br />
+  <span style="color:red" *ngIf="destination && destination.invalid && destination.touched">
+    this Field is not valid
+  </span>
+  <br>
+  <label for="">Duration</label>
+  <input
+  type="number"
+  placeholder="Enter Duration"
+  name="duration"
+  formControlName="duration"
+/><br />
+<span style="color:red" *ngIf="duration && duration.invalid && duration.touched">
+  this Field is not valid
+</span>
+
+<label for="dtype">Destination Types:</label><br>
+<select multiple formControlName="dtype" (change)="onDropdownChange($event)">
+  <option value="Beach">Beach</option>
+  <option value="Mountain">Mountain</option>
+  <option value="City">City</option>
+  <option value="Countryside">Countryside</option>
+  <option value="Other">Others</option>
+
+</select><br><br>
+<br><br>
+
+       <b> <label for="gender">Travel Mode:</label></b>
+          <div>
+            <input id="road" type="radio" value="road" name="tmode" formControlName="tmode">
+          <label for="male">Road</label>
+         </div>
+         <div>
+            <input id="flight" type="radio" value="flight" name="tmode" formControlName="tmode">
+            <label for="female">Flight</label>
+         </div> <br><br>
+
+         <b><label for="tripDetails">Trip Details:</label><br></b>
+        <b><label for="destination">Final Destination:</label></b>
+        <input type="text" id="destination" name="destination" formControlName="fdestination" required><br><br>
+        <span style="color:red" *ngIf="fdestination && fdestination.invalid && fdestination.touched">
+          this Field is not valid
+        </span>
+        <b><label for="hotel">Hotel:</label></b>
+        <input type="text" id="hotel" name="hotel" formControlName="hotel" required><br><br>
+        <br>
+
+        <span style="color:red" *ngIf="hotel && hotel.invalid && hotel.touched">
+          this Field is not valid
+        </span>
+
+    
+      <button [disabled]="loginForm.invalid" type="submit">Login</button>
+</form> 
+</body>
+</html>
+
+
+<router-outlet></router-outlet>

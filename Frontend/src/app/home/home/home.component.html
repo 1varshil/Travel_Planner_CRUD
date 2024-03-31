@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h1><b>Data of Travel</b></h1>
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Duration</th>
+        <th>Destination Types</th>
+        <th>Travel Mode</th>
+        <th>Final Destination</th>
+        <th>Hotel</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of displayuser">
+        <td>{{ data.source }}</td>
+        <td>{{ data.destination }}</td>
+        <td>{{ data.duration }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let type of data.dtype" style="list-style-type:none">{{ type }}</li>
+          </ul>
+        </td>
+        <td>{{ data.tmode }}</td>
+        <td>{{ data.fdestination }}</td>
+        <td>{{ data.hotel }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm mr-1" (click)="onEditButtonClick(data._id)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteUserData(data._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
